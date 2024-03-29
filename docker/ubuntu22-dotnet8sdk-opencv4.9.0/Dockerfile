@@ -125,7 +125,7 @@ int main(){ \n\
 FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy
 COPY --from=builder /usr/lib /usr/lib
 # Install Build the C# part of OpenCvSharp
-RUN git clone https://github.com/shimat/opencvsharp.git && cd opencvsharp
+RUN git clone https://github.com/Lakasabasz/opencvsharp.git && cd opencvsharp
 RUN cd /opencvsharp/src/OpenCvSharp && \
     dotnet build -c Release -f net8.0 && \
     cd /opencvsharp/src/OpenCvSharp.Extensions && \
@@ -149,7 +149,7 @@ RUN dotnet new console -f net8.0 -o "ConsoleApp01" && cd /ConsoleApp01 && \
      dotnet run && \
      rm -rf /ConsoleApp01
 
-RUN ldd /artifacts/libOpenCvSharpExtern.so
+RUN ldd /usr/lib/libOpenCvSharpExtern.so
 
 
 
